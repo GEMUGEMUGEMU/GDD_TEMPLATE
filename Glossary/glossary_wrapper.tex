@@ -1,0 +1,34 @@
+%
+%        ~_
+%     ~_ )_)~_
+%     )_))_))_)
+%     _!__!__!_
+%   ~~\t  Gemu/~~
+%
+%  File Name: glossary_wrapper.tex
+%  Purpose: wraps glossary
+%  Creation Date: 15-12-20
+%  Created By: Andrea Andreu Salvagnin
+%
+
+%	PREAMBLE
+\documentclass{article}
+
+\input{../Utils/global_variables.tex}
+
+\input{./glossary.tex}
+
+
+\title{\projectname Glossary Document}
+
+\date{\docdate}
+\author{\authorname}
+
+\begin{document}
+\maketitle
+\newpage
+
+\printglossary
+
+\glsaddall
+\end{document}
