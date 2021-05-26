@@ -1,0 +1,40 @@
+%
+%        ~_
+%     ~_ )_)~_
+%     )_))_))_)
+%     _!__!__!_
+%   ~~\t  Gemu/~~
+%
+%  File Name: mechanics_doc.tex
+%  Purpose:
+%  Creation Date: 16-12-20
+%  Created By: Andrea Andreu Salvagnin
+%
+
+%	PREAMBLE
+\documentclass{article}
+
+\input{./Utils/project_settings.tex}
+
+\input{./Glossary/glossary.tex}
+
+
+\title{\doctitle{Mechanics Document}}
+
+\author{\authorname}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\input{./Mechanics/mechanics.tex}
+\newpage
+
+\printglossary
+
+\glsaddall
+\end{document}

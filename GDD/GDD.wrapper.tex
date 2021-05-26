@@ -1,0 +1,46 @@
+%
+%        ~_
+%     ~_ )_)~_
+%     )_))_))_)
+%     _!__!__!_
+%   ~~\t  Gemu/~~
+%
+%  File Name: GDD.tex
+%  Purpose: Inglobe all components of the GDD document
+%  Creation Date: 14-12-20
+%  Created By: Andrea Andreu Salvagnin
+%
+
+%	PREAMBLE
+\documentclass{article}
+
+\input{./Utils/project_settings.tex}
+
+\input{./Glossary/glossary.tex}
+
+\title{\doctitle{Game Design Document}}
+
+\author{\authorname}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\input{./Concept/concept.tex}
+
+\input{./Sekaikan/sekaikan.tex}
+
+\input{./Mechanics/mechanics.tex}
+
+\input{./Aesthetics/aesthetics.tex}
+
+\input{./UI/user_interface.tex}
+
+\newpage
+\printglossary
+
+\glsaddall
+\end{document}

@@ -1,0 +1,91 @@
+%
+%        ~_
+%     ~_ )_)~_
+%     )_))_))_)
+%     _!__!__!_
+%   ~~\t  Gemu/~~
+%
+%  File Name: glossary.tex
+%  Purpose: Collect all names and acronims of the GDD document
+%  Creation Date: 14-12-20
+%  Created By: Andrea Andreu Salvagnin
+%
+
+\usepackage{glossaries}
+
+%	Add the command \makeglossaries before the first entry of the glossary
+\makeglossaries
+%\makenoidxglossaries
+
+%	To create an entry in the glossary you need to use the
+%	\newglossaryentry command which takes two parameters
+\newglossaryentry{dia_pla}
+{
+	name=($\diamondsuit$),
+	description=
+	{
+Diamond/Achiever players are these who prefer to gain ”points”, levels,
+equipment and other concrete measurements of succeeding in a game
+	}
+}
+
+\newglossaryentry{spa_pla}
+{
+	name=($\spadesuit$),
+	description=
+	{
+Spades/Explorers players have a tendency to: dig around, discovering
+areas, and immerse themselves in the game world
+	}
+}
+
+\newglossaryentry{sekaikan}
+{
+% Source:
+% https://www.gamedev.net/articles/game-design/game-design-and-theory/characters-and-worldbuilding-analyzing-the-strength-of-japanese-games-r3279/
+	name=sekaikan,
+	description=
+	{
+World settings and/or world view
+	}
+}
+
+\newglossaryentry{settei}
+{
+% Source:
+% https://www.gamedev.net/articles/game-design/game-design-and-theory/characters-and-worldbuilding-analyzing-the-strength-of-japanese-games-r3279/
+	name=settei,
+	description=
+	{
+Characters motivations and relationships
+	}
+}
+
+\newglossaryentry{p1}
+{
+	name=(P\ding{182}),
+	description=
+	{
+Priority one. Things that have top priority in development
+	}
+}
+
+\newglossaryentry{p2}
+{
+	name=(P\ding{183}),
+	description=
+	{
+Priority two. Things that have lesser priority than \gls{p1} in development
+	}
+}
+
+\newglossaryentry{p3}
+{
+	name=(P\ding{184}),
+	description=
+	{
+Priority three. Things that have lesser priority than \gls{p2} in development
+	}
+}
+
+
