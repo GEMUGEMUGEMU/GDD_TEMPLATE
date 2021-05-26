@@ -76,24 +76,40 @@ endef
 LATEX=pdflatex
 PRJCT_NAME:=GDD_TEMPLATE
 
+SRC:=src
+OBJ:=obj
+
 ALL_TEX_FILES:=$(shell find ./ -type f -iname *.tex)
 ALL_WRAPPERS:=$(shell find ./ -type f -iname *.wrapper.tex)
 ALL_PDF:=$(foreach file,$(ALL_WRAPPERS),$(PRJCT_NAME)_$(notdir $(call WRAPPER2PDF,$(file))))
 ALL_DOC_NAME:=$(foreach file,$(notdir $(ALL_WRAPPERS)),$(call WRAPPER2NAME,$(file)))
 
+SRC_SUBDIRS:=$(shell find $(SRC)/ -type d)
+OBJ_SUBDIRS:=$(patsubst $(SRC)%,$(OBJ)%,$(SRC_SUBDIRS))
+MKDIR:=mkdir -p
+RM:=rm
+
 .PHONY: make_docs
 
-make_docs: $(ALL_PDF)
+make_docs: $(OBJ_SUBDIRS) $(ALL_PDF)
 	$(call print_lodo)
 
 # Generate and evaluate rules
-$(foreach FILE,$(ALL_WRAPPERS),$(eval $(call GEN_DOC,$(PRJCT_NAME)_$(call WRAPPER2NAME,$(FILE)),$(LATEX),$(dir $(FILE)),$(FILE),$(call GET_TEX_DEP,$(FILE)))))
+$(foreach FILE,$(ALL_WRAPPERS),$(eval $(call GEN_DOC,$(PRJCT_NAME)_$(call WRAPPER2NAME,$(FILE)),$(LATEX),$(patsubst ./$(SRC)%,./$(OBJ)%,$(dir $(FILE))),$(FILE),$(call GET_TEX_DEP,$(FILE)))))
 
 # Generate and evaluate rules
 $(foreach FILE,$(ALL_TEX_FILES),$(eval $(call DEP_RULE,$(FILE))))
 
-.PHONY: info
-info:
-	$(info $(call GET_TEX_DEP,))
-	$(info $(ALL_TEX_FILES))
+$(OBJ_SUBDIRS):
+	$(MKDIR) $(OBJ_SUBDIRS)
 
+.PHONY: info clean
+
+info:
+	$(info $(foreach FILE,$(ALL_WRAPPERS),$(patsubst ./$(SRC)%,./$(OBJ)%,$(dir $(FILE)))))
+	$(info $(ALL_TEX_FILES))
+	$(info $(ALL_PDF))
+
+clean:
+	- $(RM) -r "./$(OBJ)"
+	$(foreach PDF,$(ALL_PDF),$(shell $(RM) -r "./$(PDF)"))
